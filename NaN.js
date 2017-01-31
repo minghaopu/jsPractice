@@ -40,4 +40,4 @@
 	myIsNaN({a:1});			// fasle;
 	myIsNaN(function(){});	// false;
 
-})()
+})(window)
