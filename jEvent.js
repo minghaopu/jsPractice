@@ -91,4 +91,4 @@
 		}
 	}
 	return jEventUtil;
-})()
+})(window)
