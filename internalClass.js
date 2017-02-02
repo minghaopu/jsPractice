@@ -20,4 +20,11 @@
 	Object.prototype.toString.call(NaN);				// "[object Number]"
 
 	Object.prototype.toString.call(true);				// "[object Boolean]"
+
+
+
+	var a = new String("abc");
+	var b = a + "";
+	typeof a; // "object"
+	typeof b; // "string"
 })();
