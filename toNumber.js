@@ -19,6 +19,7 @@
 	Number("-1e100");	// -1e+100
 	Number("-1e1000");	// -Infinity
 	Number("-1e10000");	// -Infinity
+	Number("1e10000");	// Infinity
 
 	Number("-1e10.0");	// NaN
 	Number("fdas");		// NaN
