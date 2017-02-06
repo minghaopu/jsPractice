@@ -137,6 +137,13 @@
 	*/
 
 
+	String(document);	// "[object HTMLDocument]"
+	String(document.all);	// "[object HTMLAllCollection]"
+	var a = document.getElementsByTagName("div");
+	String(a);			// "[object HTMLCollection]"
+	String(window);		// "[object Window]"
+
+
 
 
 

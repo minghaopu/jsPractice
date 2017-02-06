@@ -6,6 +6,7 @@
 	Number(NaN);		// NaN;
 
 
+	Number("-0");		// -0
 	Number("1");		// 1
 	Number("01");		// 1
 	Number("-1");		// -1
@@ -33,6 +34,8 @@
 
 	Number({});			// NaN
 	Number({"a":"1"});	// NaN
+	Number(function(){}); // NaN
+
 
 
 	// if valueOf exist use valueOf, else use toString, else NaN
@@ -67,4 +70,11 @@
 		return this.join("");
 	}
 	Number(d);			// 123
+
+
+	Number(document);	// NaN
+	Number(document.all);	// NaN
+	var a = document.getElementsByTagName("div");
+	Number(a);			// NaN
+	Number(window);		// NaN
 })()
