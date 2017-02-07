@@ -77,4 +77,31 @@
 	var a = document.getElementsByTagName("div");
 	Number(a);			// NaN
 	Number(window);		// NaN
+
+	Date.now() === +new Date();  // true;
+
+
+	0 | -0;			// 0;
+	0 | NaN;		// 0;
+	0 | Infinity;	// 0;
+	0 | -Infinity;	// 0;
+	0 | undefined;	// 0;
+	0 | null;		// 0;
+
+
+	// ~~~ can be used to repalce Math.floor if val > 0;
+	~~(44/7);		// 6
+	~~(-49.6);		// -49
+	Math.floor(-49.6);		// -50
+
+	parseInt(Infinity, 19);					// 18
+	parseInt(function(){}, 19);				// 15
+	for (var i = 0; i < 100; i++) {
+		// console.log(parseInt(Infinity, i));			// may not be NaN
+		// console.log(parseInt(function(){}, i));		// may not be NaN
+		// console.log(parseInt({}, i)); 				// NaN;
+		// console.log(parseInt([2], i));				// 2 or NaN
+		// console.log(parseInt([], i));				// NaN;
+		console.log(parseInt(Symbol("123"), i));
+	}
 })()
