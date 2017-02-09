@@ -94,6 +94,10 @@
 	~~(-49.6);		// -49
 	Math.floor(-49.6);		// -50
 
+
+	// Do not use non-string value for parseInt;
+	// parseInt will call toString first
+
 	parseInt(Infinity, 19);					// 18
 	parseInt(function(){}, 19);				// 15
 	for (var i = 0; i < 100; i++) {
@@ -102,6 +106,6 @@
 		// console.log(parseInt({}, i)); 				// NaN;
 		// console.log(parseInt([2], i));				// 2 or NaN
 		// console.log(parseInt([], i));				// NaN;
-		console.log(parseInt(Symbol("123"), i));
+		// console.log(parseInt(Symbol("123"), i));		// Uncaught TypeError: Cannot convert a Symbol value to a string
 	}
 })()
