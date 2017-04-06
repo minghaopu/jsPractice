@@ -1,4 +1,4 @@
-(function(window, undefined) {
+;(function(window, undefined) {
 	var jEventUtil = {
 		addHandler: function(element, type, handler) {
 			if (element.addEventListener) {
@@ -90,5 +90,6 @@
 			}
 		}
 	}
-	return jEventUtil;
+	window.jEventUtil = jEventUtil;
+	// export {jEventUtil};
 })(window)
