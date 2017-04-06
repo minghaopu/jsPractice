@@ -1,12 +1,12 @@
 ;(function(window, undefined) {
-	class XRH {
-		static send(url, method, headers, data, async = true, timeout) {
+	class XHR {
+		static send(url, method, headers, data, timeout) {
 			return new Promise((resolve, reject) => {
 				var xhr = new XMLHttpRequest();
 
-				xht.timeout = timeout || 3000;
+				xhr.timeout = timeout || 3000;
 
-				xhr.open(method, url, async);
+				xhr.open(method, url);
 				if (Object.getPrototypeOf(headers) === Object.prototype) {
 					for (var key in headers) {
 						if (headers.hasOwnProperty(key)) {
@@ -16,7 +16,7 @@
 				}
 
 				xhr.onload = function() {
-					if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) resoleve(xhr.response);
+					if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) resolve(xhr.response);
 					else reject({
 						status: xhr.status,
 						statusText: xhr.statusText
@@ -41,7 +41,7 @@
 			})
 		}
 	}
-	class Ajax {
+	window.Ajax = class Ajax{
 		static param(object) {
 			var encodedString = '';
 			for (var prop in object) {
@@ -54,12 +54,15 @@
 			}
 			return encodedString;
 		}
-		static get(url, headers, data, async, timeout) {
-			return XHR.send(url + Ajax.param(data), 'GET', null, async, timeout);
+		static get(url, headers, data, timeout) {
+			return XHR.send(url + "?" + Ajax.param(data), 'GET', headers, null, timeout);
 		}
 
-		static get(url, headers, data, async, timeout) {
-			return XHR.send(url, 'POST', data, async, timeout);
+		static post(url, headers, data, timeout) {
+			return XHR.send(url, 'POST', headers, JSON.stringify(data), timeout);
+		}
+		static delete(url, headers, data, timeout) {
+			return XHR.send(url, 'DELETE', headers, JSON.stringify(data), timeout);
 		}
 	}
 })(window)
